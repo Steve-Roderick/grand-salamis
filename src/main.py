@@ -46,6 +46,27 @@ class Baller(object):
             self.OBP,
             self.SLG,
             self.OPS))
+
+
+    def header_csv(self):
+        print("Name, 1B, 2B, 3B, HR, GS, FC, X, AB, R, RBI, OBP, SLG, OPS")
+
+    def print_csv(self):
+        print("{},{},{},{},{},{},{},{},{},{},{},{:0.2f},{:0.2f},{:0.2f}".format(
+            self.name,
+            self.B1,
+            self.B2,
+            self.B3,
+            self.HR,
+            self.GS,
+            self.FC,
+            self.XX,
+            self.AB,
+            self.R,
+            self.RBI,
+            self.OBP,
+            self.SLG,
+            self.OPS))
    
     def loadDatum(baller, datum):
         match datum:
@@ -96,14 +117,14 @@ class Baller(object):
         c = 3 * self.B3
         d = 4 * self.HR
         d = 4 * self.GS
-        self.SLG = a + b + c + d
+        self.SLG = (a + b + c + d) / self.AB
 
         # OPS
         self.OPS = self.OBP + self.SLG
 
 
 def run(team):
-    fp = "game000.csv"
+    fp = "..\games\game000.csv"
     with open(fp, 'r') as csvfile:
         datareader = csv.reader(csvfile)
         for row in datareader:
@@ -128,5 +149,12 @@ if __name__ == '__main__':
         if i == 0:
             value.header()
         value.print()
+        i = i + 1
+
+    i = 0
+    for _, value in team.items():
+        if i == 0:
+            value.header_csv()
+        value.print_csv()
         i = i + 1
         
