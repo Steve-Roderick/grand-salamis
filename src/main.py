@@ -1,0 +1,132 @@
+#
+#
+# Do some softball stats
+#
+#
+import csv
+import re
+
+
+class Baller(object):
+    '''The eater of salamis sticks'''
+    B1 = 0
+    B2 = 0
+    B3 = 0
+    HR = 0
+    GS = 0
+    FC = 0
+    XX = 0
+    AB = 0
+    R = 0
+    RBI = 0
+    OBP = 0
+    SLG = 0
+    OPS = 0
+    
+    def __init__(self, name):
+        self.name = name
+
+    def header(self):
+        print("| Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS |")
+        print("| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |")
+
+    def print(self):
+        print("| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {:0.2f} | {:0.2f} |{:0.2f} |".format(
+            self.name,
+            self.B1,
+            self.B2,
+            self.B3,
+            self.HR,
+            self.GS,
+            self.FC,
+            self.XX,
+            self.AB,
+            self.R,
+            self.RBI,
+            self.OBP,
+            self.SLG,
+            self.OPS))
+   
+    def loadDatum(baller, datum):
+        match datum:
+            case "1B":
+                baller.B1 += 1
+            case "2B":
+                baller.B2 += 1
+            case "3B":
+                baller.B3 += 1
+            case "HR":
+                baller.HR += 1
+            case "GS":
+                baller.GS += 1
+            case "FC":
+                baller.FC += 1
+            case "X":
+                baller.XX += 1
+            case _:
+                if re.match(r".* R$", datum):
+                    cnt = re.findall(r'\d+', datum)
+                    baller.R += int(cnt[0])
+                    return
+                if re.match(r".* RBI$", datum):
+                    cnt = re.findall(r'\d+', datum)
+                    baller.RBI += int(cnt[0])
+                    return
+                              
+                print("Ohh no {}".format(datum))
+        return
+
+    def stats(self):
+
+        # Count AB
+        self.AB += self.B1
+        self.AB += self.B2
+        self.AB += self.B3
+        self.AB += self.HR
+        self.AB += self.GS
+        self.AB += self.FC
+        self.AB += self.XX
+
+        # OBP
+        self.OBP = (self.AB - self.XX - self.FC) / self.AB
+
+        # SLG
+        a = 1 * self.B1
+        b = 2 * self.B2
+        c = 3 * self.B3
+        d = 4 * self.HR
+        d = 4 * self.GS
+        self.SLG = a + b + c + d
+
+        # OPS
+        self.OPS = self.OBP + self.SLG
+
+
+def run(team):
+    fp = "game000.csv"
+    with open(fp, 'r') as csvfile:
+        datareader = csv.reader(csvfile)
+        for row in datareader:
+            name = row[0].strip()
+            if not team.get(name):
+                baller = Baller(name)
+                team[baller.name] = baller
+            for col in row[1:]:
+                dp = col.strip()
+                baller.loadDatum(dp)
+
+if __name__ == '__main__':
+    
+    team = {}
+    run(team)
+    
+    for _, value, in team.items():
+        value.stats()
+    
+    i = 0
+    for _, value in team.items():
+        if i == 0:
+            value.header()
+        value.print()
+        i = i + 1
+        
