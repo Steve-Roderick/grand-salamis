@@ -22,7 +22,7 @@ class Baller(object):
     OBP = 0
     SLG = 0
     OPS = 0
-    
+
     def __init__(self, name):
         self.name = name
 
@@ -67,7 +67,7 @@ class Baller(object):
             self.OBP,
             self.SLG,
             self.OPS))
-   
+
     def loadDatum(baller, datum):
         match datum:
             case "1B":
@@ -93,7 +93,7 @@ class Baller(object):
                     cnt = re.findall(r'\d+', datum)
                     baller.RBI += int(cnt[0])
                     return
-                              
+
                 print("Ohh no {}".format(datum))
         return
 
@@ -123,27 +123,30 @@ class Baller(object):
         self.OPS = self.OBP + self.SLG
 
 
-def run(team):
-    fp = "..\games\game000.csv"
-    with open(fp, 'r') as csvfile:
-        datareader = csv.reader(csvfile)
-        for row in datareader:
-            name = row[0].strip()
-            if not team.get(name):
-                baller = Baller(name)
-                team[baller.name] = baller
-            for col in row[1:]:
-                dp = col.strip()
-                baller.loadDatum(dp)
+def run(team, log):
+    for f in log:
+        fp = f
+        with open(fp, 'r') as csvfile:
+            datareader = csv.reader(csvfile)
+            for row in datareader:
+                name = row[0].strip()
+                baller = team.get(name)
+                if not baller:
+                    baller = Baller(name)
+                    team[baller.name] = baller
 
-if __name__ == '__main__':
-    
+                for col in row[1:]:
+                    dp = col.strip()
+                    baller.loadDatum(dp)
+
+
+def report(log):
     team = {}
-    run(team)
-    
+    run(team, log)
+
     for _, value, in team.items():
         value.stats()
-    
+
     i = 0
     for _, value in team.items():
         if i == 0:
@@ -151,10 +154,11 @@ if __name__ == '__main__':
         value.print()
         i = i + 1
 
-    i = 0
-    for _, value in team.items():
-        if i == 0:
-            value.header_csv()
-        value.print_csv()
-        i = i + 1
-        
+
+if __name__ == '__main__':
+
+    report([ "..\games\game000.csv"])
+    print("*" * 80)
+    report([ "..\games\game001.csv"])
+    print("*" * 80)
+    report([ "..\games\game000.csv", "..\games\game001.csv"])
