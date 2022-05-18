@@ -22,16 +22,17 @@ class Baller(object):
     OBP = 0
     SLG = 0
     OPS = 0
+    TCD = 0
 
     def __init__(self, name):
         self.name = name
 
     def header(self):
-        print("| Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS |")
-        print("| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |")
+        print("| Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD")
+        print("| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
 
     def print(self):
-        print("| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {:0.2f} | {:0.2f} |{:0.2f} |".format(
+        print("| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {:0.2f} | {:0.2f} | {:0.2f} | {:0.2f} |".format(
             self.name,
             self.B1,
             self.B2,
@@ -45,7 +46,8 @@ class Baller(object):
             self.RBI,
             self.OBP,
             self.SLG,
-            self.OPS))
+            self.OPS,
+            self.TCD))
 
 
     def header_csv(self):
@@ -92,6 +94,10 @@ class Baller(object):
                 if re.match(r".* RBI$", datum):
                     cnt = re.findall(r'\d+', datum)
                     baller.RBI += int(cnt[0])
+                    return
+                if re.match(r".* TCD$", datum):
+                    cnt = re.findall(r'\d+', datum)
+                    baller.TCD += int(cnt[0])
                     return
 
                 print("Ohh no {}".format(datum))
