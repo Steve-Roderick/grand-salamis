@@ -146,15 +146,20 @@ def run(team, log):
                     baller.loadDatum(dp)
 
 
-def report(log):
+def report(log, doSort):
     team = {}
     run(team, log)
 
     for _, value, in team.items():
         value.stats()
 
+    if doSort:
+        lst = sorted(team.items())
+    else:
+        lst = team.items()
+
     i = 0
-    for _, value in team.items():
+    for _, value in lst:
         if i == 0:
             value.header()
         value.print()
@@ -163,8 +168,10 @@ def report(log):
 
 if __name__ == '__main__':
 
-    report([ "..\games\game000.csv"])
+    games = [
+        "..\games\game000.csv",
+        "..\games\game001.csv",
+        "..\games\game002.csv"]
+    report([games[-1]], False)
     print("*" * 80)
-    report([ "..\games\game001.csv"])
-    print("*" * 80)
-    report([ "..\games\game000.csv", "..\games\game001.csv"])
+    report(games, True)
