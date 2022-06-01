@@ -115,9 +115,10 @@ class Baller(object):
         self.AB += self.XX
 
         # OBP
-        self.OBP = (self.AB - self.XX - self.FC) / self.AB
+        self.OBP = (self.AB - self.XX - (self.FC/2.0)) / self.AB
 
         # SLG
+        z = 0.5 * self.FC
         a = 1 * self.B1
         b = 2 * self.B2
         c = 3 * self.B3
