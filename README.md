@@ -1,7 +1,7 @@
 # grand-salamis
 
 ## Game 2 (May 31)
-> **L** (14  - 1) over 7 innings
+> **L** (14  - 19) over 7 innings
 
 | Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
