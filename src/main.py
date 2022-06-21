@@ -147,6 +147,21 @@ def run(team, log):
                     dp = col.strip()
                     baller.loadDatum(dp)
 
+def team_avg(team):
+    b = Baller("Z Team Avg")
+    for _, v in team.items():
+        b.B1 += v.B1
+        b.B2 += v.B2
+        b.B3 += v.B3
+        b.HR += v.HR
+        b.GS += v.GS
+        b.FC += v.FC
+        b.XX += v.XX
+        b.R  += v.R
+        b.RBI += v.RBI
+    b.stats()
+    team[b.name] = b
+
 
 def report(log, doSort):
     team = {}
@@ -154,6 +169,8 @@ def report(log, doSort):
 
     for _, value, in team.items():
         value.stats()
+
+    team_avg(team)
 
     if doSort:
         lst = sorted(team.items())
