@@ -100,7 +100,8 @@ class Baller(object):
                     baller.TCD += int(cnt[0])
                     return
 
-                print("Ohh no {}".format(datum))
+                print("Ohh no {} {}".format(baller.name, datum))
+                exit(0)
         return
 
     def stats(self):
@@ -172,7 +173,8 @@ if __name__ == '__main__':
     games = [
         "..\games\game000.csv",
         "..\games\game001.csv",
-        "..\games\game002.csv"]
+        "..\games\game002.csv",
+        "..\games\game003.csv"]
     report([games[-1]], False)
     print("*" * 80)
     report(games, True)
