@@ -191,7 +191,8 @@ if __name__ == '__main__':
         "..\games\game000.csv",
         "..\games\game001.csv",
         "..\games\game002.csv",
-        "..\games\game003.csv"]
+        "..\games\game003.csv",
+        "..\games\game004.csv"]
     report([games[-1]], False)
     print("*" * 80)
     report(games, True)
