@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #
 #
 # Do some softball stats
@@ -5,6 +6,7 @@
 #
 import csv
 import re
+import os
 
 
 class Baller(object):
@@ -188,11 +190,7 @@ def report(log, doSort):
 if __name__ == '__main__':
 
     games = [
-        "..\games\game000.csv",
-        "..\games\game001.csv",
-        "..\games\game002.csv",
-        "..\games\game003.csv",
-        "..\games\game004.csv"]
+        "./games/game000.csv"]
     report([games[-1]], False)
     print("*" * 80)
     report(games, True)
