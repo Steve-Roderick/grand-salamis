@@ -24,7 +24,7 @@
 
 
 ## Game 2 (May 23)
-> **W** (17 - 16) over 7 innints
+> **W** (17 - 16) over 7 innings
 > vs. Stone Cold Bunters
 > PG: Richard
 
