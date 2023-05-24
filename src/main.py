@@ -190,7 +190,8 @@ def report(log, doSort):
 if __name__ == '__main__':
 
     games = [
-        "./games/game000.csv"]
+        "./games/game000.csv",
+        "./games/game001.csv"]
     report([games[-1]], False)
     print("*" * 80)
     report(games, True)
