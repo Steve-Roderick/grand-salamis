@@ -127,8 +127,8 @@ class Baller(object):
         b = 2 * self.B2
         c = 3 * self.B3
         d = 4 * self.HR
-        d = 4 * self.GS
-        self.SLG = (z + a + b + c + d) / self.AB
+        e = 4 * self.GS
+        self.SLG = (z + a + b + c + d + e) / self.AB
 
         # OPS
         self.OPS = self.OBP + self.SLG
