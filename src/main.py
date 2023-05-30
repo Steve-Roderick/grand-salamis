@@ -7,6 +7,7 @@
 import csv
 import re
 import os
+import glob
 
 
 class Baller(object):
@@ -134,10 +135,14 @@ class Baller(object):
 
 
 def run(team, log):
+    header = notes = None
     for f in log:
         fp = f
         with open(fp, 'r') as csvfile:
             datareader = csv.reader(csvfile)
+
+            header = next(datareader)
+            notes = next(datareader)
             for row in datareader:
                 name = row[0].strip()
                 baller = team.get(name)
@@ -148,6 +153,7 @@ def run(team, log):
                 for col in row[1:]:
                     dp = col.strip()
                     baller.loadDatum(dp)
+    return (header, notes)
 
 def team_avg(team):
     b = Baller("Z Team Avg")
@@ -167,8 +173,13 @@ def team_avg(team):
 
 def report(log, doSort):
     team = {}
-    run(team, log)
+    header, notes = run(team, log)
 
+    if not doSort:
+        print(header[0])
+        print("")
+        print(notes[0])
+        print("")
     for _, value, in team.items():
         value.stats()
 
@@ -185,13 +196,27 @@ def report(log, doSort):
             value.header()
         value.print()
         i = i + 1
+    print("")
+    print("")
 
 
 if __name__ == '__main__':
 
-    games = [
-        "./games/game000.csv",
-        "./games/game001.csv"]
-    report([games[-1]], False)
-    print("*" * 80)
+    search = os.path.join("./", "games", "*.csv")
+    games = sorted(glob.glob(search), reverse=True)
+
+    print("# Grand Salamis")
+    print("")
+    # Report season stats cumulative.
+    print("# Summer 2023 Totals")
+    print("")
     report(games, True)
+
+    # Report each game
+    for game in games:
+        report([game], False)
+
+    # Legend
+    print("### Legend")
+    print(" * X denotes did not reach base")
+

@@ -1,7 +1,6 @@
-# grand-salamis
+# Grand Salamis
 
-
-## Summer 2023 Totals
+# Summer 2023 Totals
 
 | Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -22,11 +21,9 @@
 | Z Team Avg | 46 | 11 | 0 | 1 | 0 | 9 | 29 | 96 | 35 | 31 | 0.65 | 0.76 | 1.41 | 0.00 |
 
 
-
 ## Game 2 (May 23)
-> **W** (17 - 16) over 7 innings
-> vs. Stone Cold Bunters
-> PG: Richard
+
+> W (17 - 16) over 7 innings vs. Stone Cold Bunters PG: Richard
 
 | Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -45,13 +42,11 @@
 | Z Team Avg | 22 | 4 | 0 | 0 | 0 | 9 | 13 | 48 | 17 | 17 | 0.64 | 0.72 | 1.35 | 0.00 |
 
 
-
 ## Game 1 (May 16)
-> **W** (18  - 8) over 7 innings
-> vs. Juicy Jays
-> POG: Justin
 
- Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD
+> W (18 - 8) over 7 innings vs. Juicy Jays POG: Justin
+
+| Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Richard | 2 | 1 | 0 | 0 | 0 | 0 | 1 | 4 | 1 | 1 | 0.75 | 1.00 | 1.75 | 0.00 |
 | Justin | 3 | 1 | 0 | 0 | 0 | 0 | 0 | 4 | 4 | 1 | 1.00 | 1.25 | 2.25 | 0.00 |
@@ -69,8 +64,5 @@
 | Z Team Avg | 24 | 7 | 0 | 1 | 0 | 0 | 16 | 48 | 18 | 14 | 0.67 | 0.79 | 1.46 | 0.00 |
 
 
-
-
-
 ### Legend
-* X denotes did not reach base
+ * X denotes did not reach base
