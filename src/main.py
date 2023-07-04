@@ -31,12 +31,12 @@ class Baller(object):
         self.name = name
 
     def header(self):
-        print("| Name | 1B | 2B | 3B | HR | GS | FC | X | AB | R | RBI | OBP | SLG | OPS | TCD")
-        print("| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
+        print("| Name       |  1B |  2B |  3B |  HR |  GS |  FC |   X |  AB |   R | RBI |  OBP |  SLG |  OPS |")
+        print("| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
 
     def print(self):
-        print("| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {:0.2f} | {:0.2f} | {:0.2f} | {:0.2f} |".format(
-            self.name,
+        print("| {} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {: >3d} | {:0.2f} | {:0.2f} | {:0.2f} |".format(
+            self.name.ljust(10),
             self.B1,
             self.B2,
             self.B3,
@@ -49,8 +49,7 @@ class Baller(object):
             self.RBI,
             self.OBP,
             self.SLG,
-            self.OPS,
-            self.TCD))
+            self.OPS))
 
 
     def header_csv(self):
